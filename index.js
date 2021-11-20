@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express();
-const port = 8000;
+const port = env. PORT ||  8000;
 var session = require('express-session');
 var jwt_decode = require("jwt-decode");
 app.use(express.json())
@@ -28,4 +28,3 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}!`)
 });
 
-//data:text/html,<body onload="document.body.firstChild.submit()"><form method="post" action="http://localhost:8000/callback"><input value="hugh.mahn@person.com" name="auth"></form></body>
