@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express();
-const port = env. PORT ||  8000;
+const port = env.PORT ||  8000;
 var session = require('express-session');
 var jwt_decode = require("jwt-decode");
 app.use(express.json())
