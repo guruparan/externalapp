@@ -48,6 +48,7 @@ app.get('/deletionstatus', (req, res) => {
         "status": "full",
         "reason": "Name is displayed in some sections of the app"
       });
+      break;
 
     case 1:
       res.send({
@@ -63,6 +64,8 @@ app.get('/deletionstatus', (req, res) => {
         "status": "full",
         "reason": "The data is critical to the system."
       });
+      break;
+
 
     case 2:
       res.send({
@@ -78,6 +81,8 @@ app.get('/deletionstatus', (req, res) => {
         "status": "full",
         "reason": "Email is as a mapping in our tables"
       });
+      break;
+
 
     default:
       res.send({
@@ -93,6 +98,7 @@ app.get('/deletionstatus', (req, res) => {
         "status": "full",
         "reason": "Data deletion completed"
       });
+      break;
   }
 });
 
