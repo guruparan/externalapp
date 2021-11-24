@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const axios = require('axios');
 const app = express();
 const port = process.env.PORT || 8000;
 var session = require('express-session');
@@ -16,7 +17,6 @@ app.get('/token', (req, res) => {
 
 app.get('/callback', (req, res) => {
 
-  //var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
   var decoded = jwt_decode(req.query.key);
 
   console.log(JSON.stringify(decoded));
@@ -45,7 +45,7 @@ app.get('/deletionstatus', (req, res) => {
           "email",
           "phone"
         ],
-        "status": "full",
+        "status": 20,
         "reason": "Name is displayed in some sections of the app"
       });
       break;
@@ -61,7 +61,7 @@ app.get('/deletionstatus', (req, res) => {
           "email",
           "phone"
         ],
-        "status": "full",
+        "status": 50,
         "reason": "The data is critical to the system."
       });
       break;
@@ -78,7 +78,7 @@ app.get('/deletionstatus', (req, res) => {
           "lastName",
           "phone"
         ],
-        "status": "full",
+        "status": 80,
         "reason": "Email is as a mapping in our tables"
       });
       break;
@@ -95,7 +95,7 @@ app.get('/deletionstatus', (req, res) => {
         ],
         "undeleted_keys": [
         ],
-        "status": "full",
+        "status":100,
         "reason": "Data deletion completed"
       });
       break;
@@ -104,6 +104,21 @@ app.get('/deletionstatus', (req, res) => {
 
 app.post('/acknowledge', (req, res) => {
   //call the IDP endpoint from here
+  console.log(req.body.appId);
+  axios
+  .post('http://igocrm.somee.com/api/account/UpdateAppStatus', req.body.appId,{
+    headers: {
+        "Accept": "application/json",
+        "Content-type": "application/json",
+       
+    }
+})
+  .then(res => {
+    console.log("done");
+  })
+  .catch(error => {
+    console.error(error)
+  })
 
   res.send("Acknowlegement sent");
 });
