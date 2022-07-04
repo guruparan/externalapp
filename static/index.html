@@ -58,8 +58,7 @@
     <div class="jumbotron">
       <h1 id="header">Welcome</h1>
       <p class="lead">Welcome to Gum Forest a free online market place</p>
-      <a id="loginButton" class="btn btn-lg btn-primary"
-        href="http://igocrm.somee.com/login.html?appid=c482b8c7-be2e-41ae-83bd-5c67fe47c8b5" role="button">Login</a>
+      <a id="loginButton" class="btn btn-lg btn-primary" role="button">Login</a>
     </div>
 
 
@@ -84,32 +83,8 @@
   <script type="text/JavaScript">
 
         $(document).ready(function () {
-          
-          $.ajax({url: "/token", success: function(result){
-            if(result.firstName){
-              $("#header").html("Welcome "+result.firstName+" "+result.lastName);
-              $("#loginButton").hide();
-            }else{
-
-            }
-          }});
-          
-
-          $("#ackButton").click(function(){
-            
-
-            $.ajax({
-                  url: '/acknowledge',
-                  contentType: 'application/json',
-                  data: JSON.stringify({appId:$("#txtRequestId").val()}),
-
-                  type: 'POST',
-                  async: false,
-                  success: function (data) {
-                    alert(data)
-                  }
-          });
-
+          $("#loginButton").click(function(){
+                alert(123);
           });
         });
 
